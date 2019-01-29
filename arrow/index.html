@@ -1,0 +1,52 @@
+<html>
+<!-- Reference
+https://codeburst.io/javascript-arrow-functions-for-beginners-926947fc0cdc
+-->
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <script>
+        function funcName1(params) {
+            return params + 2;
+        }
+
+        // 4
+        console.log(funcName1(2));
+
+        var funcName2 = (params) => params + 2
+
+        // 4
+        console.log(funcName2(2));
+
+
+        function Counter1() {
+            this.num = 0;
+            this.timer = setInterval(function add() {
+                this.num++;
+                console.log(this.num);
+            }, 1000);
+        }
+
+        var b = new Counter1();
+        // Returns NAN
+
+        function Counter2() {
+            this.num = 0;
+            this.timer = setInterval(function add() {
+                console.log(this);
+            }, 1000);
+        }
+        var c = new Counter2();
+        // returns counter
+
+        // Remove to observe counters
+        clearInterval(b.timer);
+        clearInterval(c.timer);
+    </script>
+</body>
+
+</html>

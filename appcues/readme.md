@@ -1,8 +1,8 @@
 # App-cues demo
 
 This demonstrates the static example for app cues. The example must be triggered
-by a webserver. Opening this locally with your web browser using the file:// 
-protocol will not work. 
+by a webserver which is the typical approach when deploying to production. Opening
+this locally with your web browser using the file:// protocol will not work. 
 
 ## Demo
 
@@ -44,7 +44,8 @@ For example:
 ### Locally
 
 To run, pass the local html file to nginx 
-in a docker container with the following run command.
+in a docker container with the following run command. This will run nginx
+with App Cues inside on port 8080. 
 
 ```
 docker run -v <this absolute path>:/usr/share/nginx/html -p 8080:80 nginx
@@ -55,6 +56,11 @@ For example
 ```
 docker run -v /home/pl/go/src/github.com/peterlamar/javascript-workshop/appcues:/usr/share/nginx/html -p 8080:80 nginx
 ```
+
+Then open [http://localhost:8080/](http://localhost:8080/) and make sure the site is visible. 
+
+Finally, go to [http://localhost:8080/?hey_appcues](http://localhost:8080/?hey_appcues) to see 
+the app_cues dialog in the lower left and verify its configured properly. 
 
 ## Reference
 

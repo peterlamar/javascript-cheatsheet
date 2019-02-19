@@ -1,6 +1,6 @@
 # App-cues demo
 
-This demonstrates the static example for app cues. The example must be triggered
+This demonstrates the static html example for app cues. The example must be loaded
 by a webserver which is the typical approach when deploying to production. Opening
 this locally with your web browser using the file:// protocol will not work. 
 

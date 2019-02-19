@@ -5,4 +5,4 @@ and web fundamentals.
 
 1. [this](https://github.com/peterlamar/java-workshop/tree/master/this)
 2. [arrow functions](https://github.com/peterlamar/java-workshop/tree/master/arrow)
-3. [app cues](https://github.com/peterlamar/java-workshop/tree/master/appcues)
+3. [app cues](https://github.com/peterlamar/javascript-workshop/tree/master/appcues)

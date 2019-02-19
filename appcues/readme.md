@@ -6,37 +6,27 @@ protocol will not work.
 
 ## Demo
 
-Add your project number and unique id to the index.html so
+Add your project number and unique id to the index.html 
 
-this 
+
 ```
-<script src="//fast.appcues.com/<projectnum>.js"></script>
+// NOTE: These values should be specific to the current user.
+Appcues.identify("<project_id>", { // Replace with unique identifier for current user
+    name: "John Doe",   // Current user's name
+    email: "john.doe@example.com", // Current user's email
+    created_at: 1234567890,    // Unix timestamp of user signup date
+
+    // Additional user properties.
+    // is_trial: false,
+    // plan: "enterprise"
+});
 ```
 
-Needs to be 
-
+For example:
 ```
 <script src="//fast.appcues.com/12345.js"></script>
-```
 
-and 
-
-```
-    // NOTE: These values should be specific to the current user.
-    Appcues.identify("<project_id>", { // Replace with unique identifier for current user
-        name: "John Doe",   // Current user's name
-        email: "john.doe@example.com", // Current user's email
-        created_at: 1234567890,    // Unix timestamp of user signup date
-
-        // Additional user properties.
-        // is_trial: false,
-        // plan: "enterprise"
-    });
-```
-
-Needs to be 
-
-```
+<script>
     // NOTE: These values should be specific to the current user.
     Appcues.identify("asdvcs-3423423-sdfdsf-324rdsf-fsdf32-ee3", { // Replace with unique identifier for current user
         name: "John Doe",   // Current user's name
@@ -47,9 +37,9 @@ Needs to be
         // is_trial: false,
         // plan: "enterprise"
     });
-```
+</script>
 
-Fot example
+```
 
 ### Locally
 

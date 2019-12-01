@@ -37,7 +37,7 @@ Content-Type: application/json
 
 
 ```
-firebase list projects
+firebase projects:list
 firebase use --add <project-id>
 firebase serve -p 8081
 ```

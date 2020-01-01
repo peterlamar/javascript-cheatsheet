@@ -7,3 +7,4 @@ and web fundamentals.
 1. [arrow functions](https://github.com/peterlamar/java-workshop/tree/master/arrow)
 1. [app cues](https://github.com/peterlamar/javascript-workshop/tree/master/appcues)
 1. [firebase](https://github.com/peterlamar/javascript-examples/tree/master/firebase)
+1. [pwa](https://github.com/peterlamar/javascript-examples/tree/master/your-first-pwapp-master)

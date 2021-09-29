@@ -3,9 +3,11 @@
 
 1. [Literals](#literals)
 1. [Constants](#constants)
-1. [Examples](#examples)
 1. [Declarations](#declarations)
 1. [Statements](#statements)
+1. [Functions](#functions)
+1. [String](#string)
+1. [Examples](#examples)
 
 
 ## Literals
@@ -28,6 +30,7 @@ JavaScript provides seven different data types:
 '\n', '\\', '\'', '\"'      // Newline, backslash, single quote, double quote
 "string\n"                  // String ending with newline and \0
 true, false                 // bool constants 1 and 0
+{type:"Fiat", model:"500"}  // object literal
 ```
 
 ## Constants
@@ -51,21 +54,36 @@ To ensure your data doesn't change, JavaScript provides a function Object.freeze
 ```javascript
 var x;                      // Declare undefined var
 let x=255;                  // Declare and initialize x to 255 (block scoped)
-var x=255;                  // Declare and initialize x to 255 (function scoped)
-var ourDecimal = 255.5;     // float
-var c='a';                  // Usually 8 bit character
-var b=true;                 // true or false
-var a, b, c;                // Multiple declarations
-var x = new Array(10);      // array of size 10, all elements undefined
-var y = new Array(10, 5);   // array of size 2: [10, 5]
-var x = [];                 // array of size 0
+const x=255;                // Declare and initialize x to 255 (function scoped)
+const ourDecimal = 255.5;   // float
+const c='a';                // Usually 8 bit character
+const b=true;               // true or false
+const a, b, c;              // Multiple declarations
+const x = new Array(10);    // array of size 10, all elements undefined
+const y = new Array(10, 5); // array of size 2: [10, 5]
+const x = [];               // array of size 0
 x[2] = 12;                  // x is now size 3: [undefined, undefined, 12]
-var x = [10];               // array of size 1: 10
+const x = [10];             // array of size 1: 10
 const PI = 3.141;           // const number 3.141
 const cars = ["Saab", "Volvo", "BMW"]; // You can create a constant array
 cars[0] = "Toyota";         // You can change an element
 cars.push("Audi");          // You can add an element
 cars = ["Toyota", "Volvo", "Audi"];    // ERROR, cannot reassign array
+const car = {type:"Fiat", model:"500"} // Const car object
+const sum = function(x, y)  // Declare function as var
+{ return x + y; };     
+sum(2,3)                    // Would return 5  
+var operations = [sum];     // Store function in array
+operations[0](2,3)          // Would return 5
+var student = {             // Declare Object
+  name: "Mary", 
+  age: 10 
+}
+student.name                // Return "Mary"
+student["name"]             // Return "Mary"
+student.gender = "female"   // Add gender member to object
+delete student.gender       // Delete gender member from object
+student.prototype.hat="red";// Create hat member of object student
 ```
 ## Statements
 
@@ -110,6 +128,30 @@ continue;                   // Jump to bottom of while, do, or for loop
 try { a; }
 catch (T t) { b; }          // If a throws a T, then jump here
 catch (...) { c; }          // If a throws something else, jump here
+```
+## Functions
+
+```javascript
+function f(x, y)            // f is a function returning x*y
+{return x*y;};
+let x = f(2,2);             // x will be 4
+const f = (x, y) =>         // Array function syntax
+{return x*y}
+const f = (x, y) => x*y;    // Implicit return
+function f(x=1,y=2)         // f() is equivalent to f(1,2)
+```
+## String
+
+```javascript
+const str = "my string";    // Create string
+str.indexOf("my");          // Position of first occurance
+str.slice(0, 2);            // Pulls a specified part of a string
+str.toUpperCase();          // turns characters of string to uppercase
+str.startsWith("my");       // returns true if string starts with value
+str.startsWith("my", 2);    // returns true if string starts with value from position
+str.endsWith("my");         // true if string ends with value
+str.includes("string");     // true if string includes value passed in
+str.repeat(2);              // returns the repeated string
 ```
 
 ## Examples

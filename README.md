@@ -6,6 +6,7 @@
 1. [Declarations](#declarations)
 1. [Statements](#statements)
 1. [Functions](#functions)
+1. [Classes](#classes)
 1. [String](#string)
 1. [Examples](#examples)
 
@@ -140,6 +141,29 @@ const f = (x, y) =>         // Array function syntax
 const f = (x, y) => x*y;    // Implicit return
 function f(x=1,y=2)         // f() is equivalent to f(1,2)
 ```
+
+## Classes
+
+```javascript
+class SomeClass {           // A new type
+  constructor(a, b) {       // Constructor
+    this.a = a;             // Member var
+  }
+  someMethod() {            // Method
+    console.log('do thing');
+  }
+}
+const someClass = new SomeClass('a','b'); // Declare new instance
+class OtherClass extends SomeClass{ // Inheritance
+  constructor(a, b) {    
+    super(a,b);                     // Parent Constructor            
+  }
+  static utilMethod(){}             // Static Method
+} 
+
+```
+
+
 ## String
 
 ```javascript

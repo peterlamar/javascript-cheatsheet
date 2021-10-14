@@ -1,6 +1,7 @@
 <html>
 <!-- Reference
 https://www.youtube.com/watch?v=vn3tm0quoqE
+https://github.com/codediodeio/async-await-pro-tips
 -->
 
 <head>
@@ -20,6 +21,8 @@ https://www.youtube.com/watch?v=vn3tm0quoqE
             return Promise.resolve(fruits[name]);
         };
 
+        const delay = time => new Promise(res => setTimeout(res, time));
+
         const getFruit = async name => {
             const fruits = {
                 pineapple: '🍍',
@@ -27,18 +30,30 @@ https://www.youtube.com/watch?v=vn3tm0quoqE
                 strawberry: '🍓'
             };
 
+            await delay(1000); // since we're using async functions, we can "await" a promise
             return fruits[name];
         };
 
-        getFruit('peach').then(console.log) // "🍑"
+        const makeSmoothieFast = async () => {
+            const a = getFruit('pineapple');
+            const b = getFruit('strawberry');
+
+            return await Promise.all([a, b]) // "🍍,🍓 Elasped: 1000"
+        };
 
 
-        const makeSmoothie = async () => {
-            const a = await getFruit('pineapple')
-            console.log(a)
-        }
+        const makeSmoothieSlow = async () => {
+            const a = await getFruit('pineapple');
+            const b = await getFruit('strawberry');
 
-        makeSmoothie() // "🍍"
+            return Promise.all([a, b])       // "🍍,🍓 Elasped: 2002"
+        };
+
+        const tick = Date.now()
+        const log = (v) => console.log(`${v} \n Elasped: ${Date.now() - tick}`)
+
+        makeSmoothieSlow().then(log)
+
     </script>
 </body>
 

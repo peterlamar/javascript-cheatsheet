@@ -8,105 +8,105 @@ https://codeburst.io/javascript-the-keyword-this-for-beginners-fb5238d99f85
 
 <body>
 
-    <script>
-        // #1 This refers to global object
+  <script>
+    // #1 This refers to global object
+    console.log(this);
+    // Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+    var name = 'Peter';
+    console.log(name);
+    // Peter
+    console.log(this);
+    // Window.. name = "Peter"
+
+    // #2 This refers to declared object
+    var person = {
+      first: 'John',
+      last: 'Smith',
+      full: function () {
+        console.log(this.first + ' ' + this.last);
+      }
+    };
+    person.full();
+    // logs => 'John Smith'
+
+    var person = {
+      first: 'John',
+      last: 'Smith',
+      full: function () {
         console.log(this);
-        // Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
-        var name = 'Peter';
-        console.log(name);
-        // Peter
-        console.log(this);
-        // Window.. name = "Peter"
+      }
+    };
+    person.full();
+    // logs => Object {first: "John", last: "Smith", full: function}
 
-        // #2 This refers to declared object
-        var person = {
-          first: 'John',
-          last: 'Smith',
-          full: function() {
-            console.log(this.first + ' ' + this.last);
-          }
-        };
-        person.full();
-        // logs => 'John Smith'
-
-        var person = {
-          first: 'John',
-          last: 'Smith',
-          full: function() {
-            console.log(this);
-          }
-        };
-        person.full();
-        // logs => Object {first: "John", last: "Smith", full: function}
-
-        var person = {
-          first: 'John',
-          last: 'Smith',
-          full: function() {
-            console.log(this.first + ' ' + this.last);
-          },
-          personTwo: {
-            first: 'Allison',
-            last: 'Jones',
-            full: function() {
-              console.log(this.first + ' ' + this.last);
-            }
-          }
-        };
-
-        // Calls closest parent object
-        person.full();
-        // logs => 'John Smith'
-        person.personTwo.full();
-        // logs => 'Allison Jones'
-
-        // #3 This refers to new object created
-        function Car(make, model) {
-          this.make = make;
-          this.model = model;
-        };
-
-        var myCar = new Car('Ford', 'Escape');
-        console.log(myCar);
-        // logs => Car {make: "Ford", model: "Escape"}
-
-        // #4 This is bound to object with call, apply and bind
-
-        function add(c, d) {
-          console.log(this.a + this.b + c + d);
+    var person = {
+      first: 'John',
+      last: 'Smith',
+      full: function () {
+        console.log(this.first + ' ' + this.last);
+      },
+      personTwo: {
+        first: 'Allison',
+        last: 'Jones',
+        full: function () {
+          console.log(this.first + ' ' + this.last);
         }
-        var ten = {a: 1, b: 2};
-        add.call(ten, 3, 4);
-        // logs => 10
-        add.apply(ten, [3,4]);
-        // logs => 10
+      }
+    };
 
-        var small = {
-          a: 1,
-          go: function(b,c,d){
-            console.log(this.a+b+c+d);
-          }
-        }
-        var large = {
-          a: 100
-        }
+    // Calls closest parent object
+    person.full();
+    // logs => 'John Smith'
+    person.personTwo.full();
+    // logs => 'Allison Jones'
 
-        small.go(2,3,4);
-        // logs 1+2+3+4 => 10
+    // #3 This refers to new object created
+    function Car(make, model) {
+      this.make = make;
+      this.model = model;
+    };
 
-        small.go.call(large,2,3,4);
+    var myCar = new Car('Ford', 'Escape');
+    console.log(myCar);
+    // logs => Car {make: "Ford", model: "Escape"}
+
+    // #4 This is bound to object with call, apply and bind
+
+    function add(c, d) {
+      console.log(this.a + this.b + c + d);
+    }
+    var ten = { a: 1, b: 2 };
+    add.call(ten, 3, 4);
+    // logs => 10
+    add.apply(ten, [3, 4]);
+    // logs => 10
+
+    var small = {
+      a: 1,
+      go: function (b, c, d) {
+        console.log(this.a + b + c + d);
+      }
+    }
+    var large = {
+      a: 100
+    }
+
+    small.go(2, 3, 4);
+    // logs 1+2+3+4 => 10
+
+    small.go.call(large, 2, 3, 4);
+    // logs 100+2+3+4 => 109
+
+    var bindTest = small.go.bind(large, 2);
+
+    console.log(bindTest);
+    // logs => function (b,c,d){console.log(this.a+b+c+d);}
+
+    bindTest(3, 4);
         // logs 100+2+3+4 => 109
 
-        var bindTest = small.go.bind(large,2);
 
-        console.log(bindTest);
-        // logs => function (b,c,d){console.log(this.a+b+c+d);}
-
-        bindTest(3,4);
-        // logs 100+2+3+4 => 109
-
-
-    </script>
+  </script>
 </body>
 
 </html>

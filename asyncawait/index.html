@@ -1,0 +1,45 @@
+<html>
+<!-- Reference
+https://www.youtube.com/watch?v=vn3tm0quoqE
+-->
+
+<head>
+</head>
+
+<body>
+
+    <script>
+        // Promise version
+        const getFruitPromise = name => {
+            const fruits = {
+                pineapple: '🍍',
+                peach: '🍑',
+                strawberry: '🍓'
+            };
+
+            return Promise.resolve(fruits[name]);
+        };
+
+        const getFruit = async name => {
+            const fruits = {
+                pineapple: '🍍',
+                peach: '🍑',
+                strawberry: '🍓'
+            };
+
+            return fruits[name];
+        };
+
+        getFruit('peach').then(console.log) // "🍑"
+
+
+        const makeSmoothie = async () => {
+            const a = await getFruit('pineapple')
+            console.log(a)
+        }
+
+        makeSmoothie() // "🍍"
+    </script>
+</body>
+
+</html>

@@ -6,6 +6,8 @@
 1. [Declarations](#declarations)
 1. [Statements](#statements)
 1. [Functions](#functions)
+1. [Promises](#promises)
+1. [AsyncAwait](#asyncawait)
 1. [Classes](#classes)
 1. [String](#string)
 1. [Examples](#examples)
@@ -72,13 +74,13 @@ cars.push("Audi");          // You can add an element
 cars = ["Toyota", "Volvo", "Audi"];    // ERROR, cannot reassign array
 const car = {type:"Fiat", model:"500"} // Const car object
 const sum = function(x, y)  // Declare function as var
-{ return x + y; };     
-sum(2,3)                    // Would return 5  
+{ return x + y; };
+sum(2,3)                    // Would return 5
 var operations = [sum];     // Store function in array
 operations[0](2,3)          // Would return 5
 var student = {             // Declare Object
-  name: "Mary", 
-  age: 10 
+  name: "Mary",
+  age: 10
 }
 student.name                // Return "Mary"
 student["name"]             // Return "Mary"
@@ -142,6 +144,58 @@ const f = (x, y) => x*y;    // Implicit return
 function f(x=1,y=2)         // f() is equivalent to f(1,2)
 ```
 
+## Promises
+
+Promise guarantees it will run upon success or failure of a task (downloading file, etc)
+
+```javascript
+let p = new Promise((resolve, reject) => {  // This runs immediately
+	let a = 1 + 1;
+  if (a == 2){
+  	resolve('success');
+  } else {
+  	reject('failed');
+  }
+})
+
+p.then((message) => {       // Runs upon completetion
+console.log("this is in the then " + message);    // Called from Resolve
+}).catch((message) => {
+	console.log('This is in the catch ' + message); // Called from Failed
+})
+
+const prmOne = new Promise((resolve, reject) => {resolve('1 Done')})
+const prmTwo = new Promise((resolve, reject) => {resolve('2 Done')})
+Promise.all([               // Runs when all promises are completed
+  prmOne,
+  prmTwo
+]).then((message) => {
+  console.log(message)
+})
+
+Promise.race([               // Runs when the first promise is completed
+  prmOne,
+  prmTwo
+]).then((message) => {
+  console.log(message)
+})
+```
+
+## AsyncAwait
+
+Calling an async function always results in a promise.
+
+```javascript
+const getFruit = async name => { return "banana" }
+const makeSmoothie = async() => {
+	const a = await getFruit()
+  console.log(a)
+}
+makeSmoothie()                // banana
+```
+Await waits for a promise to be fulfilled, then returns its value
+
+
 ## Classes
 
 ```javascript
@@ -155,11 +209,11 @@ class SomeClass {           // A new type
 }
 const someClass = new SomeClass('a','b'); // Declare new instance
 class OtherClass extends SomeClass{ // Inheritance
-  constructor(a, b) {    
-    super(a,b);                     // Parent Constructor            
+  constructor(a, b) {
+    super(a,b);                     // Parent Constructor
   }
   static utilMethod(){}             // Static Method
-} 
+}
 
 ```
 
@@ -181,7 +235,7 @@ str.repeat(2);              // returns the repeated string
 ## Examples
 
 These are a simple set of examples for teaching and learning basic javascript
-and web fundamentals. 
+and web fundamentals.
 
 1. [this](https://github.com/peterlamar/javascript-cheatsheet/tree/master/this)
 1. [arrow functions](https://github.com/peterlamar/javascript-cheatsheet/tree/master/arrow)
